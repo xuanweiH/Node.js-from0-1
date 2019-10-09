@@ -1,3 +1,9 @@
+/*
+ 直接node运行art-template.js文件 可以看到 template.render函数的效果 展示出对应的模板引擎渲染出来的html效果 
+ template.render(`html`,{data})
+*/
+
+
 const template = require('art-template')
 
 const tem =  template.render(`
