@@ -1,6 +1,7 @@
 const http = require('http')
 const fs = require('fs')
-
+const mime = require('mime')
+const path = require('path')
 
 const hostname = '127.0.0.1'
 const port = 3000
@@ -16,24 +17,22 @@ const server = http.createServer((req, res) => {
             res.setHeader('Content-type','text/html; charset=utf-8');
             res.end(data)
         })
-    } else if (url === '/main.css') {
-        fs.readFile('./main.css',(err, data) =>{
+    } else if (url.startsWith('/assets/')) {
+        fs.readFile(`.${url}`,(err, data) =>{
             if (err) {
-                throw err
+                res.statusCode = 404 
+                res.setHeader('Content-type','text/plain; charset=utf-8');
+                res.end('404 Not Found.')
             }
+            const contentType = mime.getType(path.extname(url)) // path.extname解析文件名
             res.statusCode = 200
-            res.setHeader('Content-type','text/css; charset=utf-8');
+            res.setHeader('Content-type',contentType);
             res.end(data)
         })
-    } else if (url === '/main.js') {
-        fs.readFile('./main.css',(err, data) =>{
-            if (err) {
-                throw err
-            }
-            res.statusCode = 200
-            res.setHeader('Content-type','text/css; charset=utf-8');
-            res.end(data)
-        })
+    } else {
+        res.statusCode = 404 
+        res.setHeader('Content-type','text/plain; charset=utf-8');
+        res.end('404 Not Found.')
     }
     
    
