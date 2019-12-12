@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 浏览器事件循环 */
+        //   setTimeout(()=>{
+        //       console.log('timeout')
+        //   },0)
+        //   Promise.resolve().then(() =>{
+        //       console.log('promise')
+        //   })
+        //   console.log('main')
+
+        // 加深宏任务和微任务的理解
+        /*   setTimeout(()=>{
+             console.log('setTimeout')  //宏任务
+          },0)
+          Promise.resolve().then(() =>{ // 微任务
+              console.log('promise')  
+              Promise.resolve().then(() =>{  // 微任务
+                  console.log('promise2')
+              })
+          })
+          console.log('main') */
+        //   main - p1 - p2 -set 得出结论 一轮事件循环会执行一次宏任务与所有的微任务
+
+        setTimeout(() => {
+            Promise.resolve().then(() =>{ // 微任务
+                console.log('promise')  
+            })
+        },0)
+        Promise.resolve().then(() =>{ // 微任务
+            setTimeout(() => {
+                    console.log('timeout')  
+            },0)
+        })
+        console.log('main')
+
+        // main - pro - timeout 得出结论任务队列 保持先进先出的状态
+    </script>
+</body>
+</html>
