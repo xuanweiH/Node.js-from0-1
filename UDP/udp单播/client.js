@@ -3,7 +3,7 @@ const dgram = require('dgram')
 const client = dgram.createSocket('udp4')
 
 // client.send('hello', 3000, 'localhost')
-
+//node构建udp单播客户端
 
 client.on('listening', () => {
     const address = client.address()
