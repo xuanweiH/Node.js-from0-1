@@ -1,7 +1,7 @@
 const net = require('net')
 const types = require('./type')
 const server = net.createServer()
-
+//node 构建服务端
 // const clients = []
 const users = []
 server.on('connection',clientSocket =>{
