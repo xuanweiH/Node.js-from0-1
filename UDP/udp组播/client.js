@@ -1,7 +1,7 @@
 const dgram = require('dgram')
 
 const client = dgram.createSocket('udp4')
-
+// node构建udp组播客户端
 client.on('listening', () => {
     const address = client.address()
     console.log(`client running ${address.address}:${address.port}`)

@@ -4,7 +4,7 @@
 // })
 
 // console.log('222')
-
+// settimeout和 setImmediate 和nexttick的区别
 const fs = require('fs')
 const path = require('path')
 /*  不在eventloop里面的阶段执行  在阶段和阶段之间的间隙执行*/

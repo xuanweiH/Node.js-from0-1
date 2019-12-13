@@ -8,7 +8,7 @@ const client = net.createConnection({
     host: '127.0.0.1',
     port: 3000
 })
-
+// node构建客户端
 client.on('connect', () => {
     console.log('成功的连接到服务器了')
     process.stdout.write('请输入昵称: ')
