@@ -14,7 +14,7 @@ function someAsyncOperation (callback) {
 
 var timeoutScheduled = Date.now()
 var fileReadTime = 0
-
+// node时间循环测试
 setTimeout(function() {
     var delay = Date.now() - timeoutScheduled
     console.log('setTimeout:'+delay+'ms have passed since I was scheduled')

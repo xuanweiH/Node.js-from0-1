@@ -14,7 +14,7 @@
 //     console.log('timeout')
 // },0)
 
-
+// setImmediate和 settimeout的区别
 /* 尝试在nodejs环境下运行 */
 const path = require('path')
 const fs = require('fs')
